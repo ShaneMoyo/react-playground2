@@ -1,8 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Search from '../components/search/Search'; 
-import Gists from '../components/gists/Gists'; 
+import Router from './Router'; 
 
 function App() {
   return (
@@ -11,9 +10,11 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
-        </p> 
-          <Gists/> 
+        </p>    
+        <Router/>  
       </header>
+      
+      
     </div>
   );
 }

@@ -1,10 +1,9 @@
 import React, {useState } from 'react'; 
-import Search from '../search/Search'; 
+import Search from './Search'; 
 import GistList from './GistList'; 
 
 export default function Gists() {
     const [gists, setGists] = useState([]); 
-    const isEmpty = gists.length === 0; 
 
     return (
         <section>
