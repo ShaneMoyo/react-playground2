@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Search from '../components/search/Search'; 
+import Gists from '../components/gists/Gists'; 
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p> 
-          <Search/> 
+          <Gists/> 
       </header>
     </div>
   );
