@@ -4,15 +4,13 @@ import { Link } from "react-router-dom";
 
 export default function Nav() { 
     return (
-        <nav>
-            <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/gist/123">About</Link>
-                </li>
-            </ul>
+        <nav className="topnav"> 
+            <a>
+                <Link to="/">Home</Link>
+            </a>  
+            <a>
+                <Link to="/about">About</Link>
+            </a>          
         </nav>
     );
 }

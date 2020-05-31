@@ -3,7 +3,7 @@ import {
     useParams,
     Link
   } from "react-router-dom";
-import api from '../../services/api'
+import api from '../../services/api';
 
 export default function Gist()  { 
     let { id } = useParams();
@@ -16,6 +16,7 @@ export default function Gist()  {
         setLoading(true);
         try { 
             const response = await api.getGistDetail(id);
+            console.log('response: ', response)
             setGist(response);
         } catch (error) { 
             setError(true)
@@ -28,14 +29,16 @@ export default function Gist()  {
         fetchGist();
     }, []);
 
-    const gistDetail = gist ? <span>
-    <h1>{gist.description}</h1>
-    <hr/>
-    <ul>
-        <li>
-            <p>created at: {gist.created_at}</p>
-        </li>
-    </ul></span> : null;
+    const gistDetail = gist ? 
+    <span>
+        <h1>{gist.description}</h1>
+        <hr/>
+        <ul>
+            <li>
+                <p>created at: {gist.created_at}</p>
+            </li>
+        </ul>
+    </span> : null;
     
     
     return(
