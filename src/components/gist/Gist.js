@@ -9,25 +9,24 @@ export default function Gist()  {
     let { id } = useParams();
     const [gist, setGist] = useState({});
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
+    const [error, setError] = useState(false);
 
     async function fetchGist() {
-        setError('')
+        setError(false)
         setLoading(true);
-        try {
-            const response = await api.getGistDetail(id)
-            console.log('set gist', response)
-            setGist(gist)
-            setLoading(false);
-        } catch (error){
-            setError(error.message)
+        try { 
+            const response = await api.getGistDetail(id);
+            setGist(response);
+        } catch (error) { 
+            setError(true)
             setLoading(false);
         }
+        
     }
 
-    useEffect(() => {
+    useEffect(() => {   
         fetchGist();
-    }, [gist]);
+    }, []);
 
     const gistDetail = gist ? <span>
     <h1>{gist.description}</h1>
@@ -37,7 +36,7 @@ export default function Gist()  {
             <p>created at: {gist.created_at}</p>
         </li>
     </ul></span> : null;
-    console.log("gistDetail", gist.description)
+    
     
     return(
         <section>
