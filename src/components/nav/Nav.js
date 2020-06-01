@@ -6,7 +6,7 @@ import './Nav.scss';
 export default function Nav() { 
     return (
         <nav className="navbar">        
-            <label className="navbar-toggle" id="js-navbar-toggle" for="chkToggle">
+            <label className="navbar-toggle" id="js-navbar-toggle" htmlFor="chkToggle">
                 <span className="hamburger">
                     <div></div>
                     <div></div>

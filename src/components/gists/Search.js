@@ -1,5 +1,6 @@
 import React, {useState} from 'react'; 
 import api from '../../services/api';
+import PropTypes from 'prop-types';
 
 export default function Search({ setGists }) { 
     const [username, setUsername] = useState(''); 
@@ -38,3 +39,7 @@ export default function Search({ setGists }) {
         </form>
     )
 }
+
+Search.propTypes = {
+    setGists: PropTypes.func
+};
