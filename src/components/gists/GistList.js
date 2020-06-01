@@ -15,7 +15,7 @@ export default function GistList({ gists }) {
         </li>
     );
     
-    const gistItems = gists.map(gist => gistItem(gist)); 
+    const gistItems = gists ? gists.map(gist => gistItem(gist)) : null;
 
     return (
         <ul>

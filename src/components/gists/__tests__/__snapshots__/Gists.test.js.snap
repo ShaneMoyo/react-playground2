@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components should render AddImage component 1`] = `
+<section>
+  <h1>
+    Gists
+  </h1>
+  <hr />
+  <Search
+    setGists={[Function]}
+  />
+  <GistList
+    gists={Array []}
+  />
+</section>
+`;
