@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export default class Search extends Component { 
     constructor(props) { 
-        super(props)
+        super()
         this.state = { 
             username: '',
             loading: false, 

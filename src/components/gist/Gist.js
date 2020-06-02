@@ -4,7 +4,7 @@ import api from '../../services/api';
 
 export default class Gist extends Component { 
     constructor(props) { 
-        super(props);
+        super();
         this.state = { 
             loading: false,
             error: false,

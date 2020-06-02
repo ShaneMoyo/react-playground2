@@ -5,7 +5,7 @@ import GistList from './GistList';
 export default class Gists extends Component {
      
     constructor(props) { 
-        super(props); 
+        super(); 
         this.state = { 
             gists: []
         }
