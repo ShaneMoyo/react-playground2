@@ -13,7 +13,6 @@ export default function Gist()  {
         setLoading(true);
         try { 
             const response = await api.getGistDetail(id);
-            console.log('response: ', response)
             setGist(response);
             setLoading(false);
         } catch (error) { 
@@ -28,15 +27,18 @@ export default function Gist()  {
     }, []);
 
     const gistDetail = gist ? 
-    <span>
-        <h1>{gist.description}</h1>
-        <hr/>
-        <ul>
-            <li>
-                <p>created at: {gist.created_at}</p>
-            </li>
-        </ul>
-    </span> : null;
+        <span>
+            <h1>{gist.description}</h1>
+            <hr/>
+            <ul>
+                <li>
+                    <p>created at: {gist.created_at}</p>
+                </li>
+                <li>
+                    <p>updated at: {gist.updated_at}</p>
+                </li>
+            </ul>
+        </span> : null;
 
     const errorMessage = <p>Something went wrong</p>;
     

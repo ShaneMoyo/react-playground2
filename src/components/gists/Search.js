@@ -31,7 +31,9 @@ export default function Search({ setGists }) {
 
     return (
         <form onSubmit={event => handleSubmit(event)}>
-            <input type="text" name="search" onChange={({ target: { value }}) => handleChange(value)}/>
+            <label htmlFor="search">Search gists</label>
+            <br/>
+            <input id="search" type="text" name="search" onChange={({ target: { value }}) => handleChange(value)}/>
             <br/>
             <button type="submit">Search</button> 
             {   loading ? <p>Loading...</p> : null  }
