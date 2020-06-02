@@ -6,28 +6,28 @@ import "./GistList.scss"
 
 export default function GistList({ gists }) {
     const gistItem = gist => (
-        <div key={gist.id} className="Table-row">
-            <div class="Table-row-item"><input type="button" /></div>
-            <div class="Table-row-item">{gist.description}</div>
-            <div class="Table-row-item">{gist.id}</div>
-            <div class="Table-row-item"><Link to={`/gist/${gist.id}`}>See more</Link></div>
-        </div>
+        <tr key={gist.id}>
+            <td>{gist.description}</td>
+            <td>{gist.id}</td>
+            <td><Link to={`/gist/${gist.id}`}>See more</Link></td>
+        </tr>
     );
     
     const gistItems = gists ? gists.map(gist => gistItem(gist)) : null;
 
     return (
-        <div className="Table">
-            <div class="Table-row Table-header">
-                <div class="Table-row-item"><input type="button" /></div>
-                <div class="Table-row-item">Description</div>
-                <div class="Table-row-item">ID</div>
-                <div class="Table-row-item">View Details</div>
-            </div>
-            <div class="row-collection">
-                {gistItems}
-            </div>
-        </div>
+        <table>
+            <thead>
+                <tr>       
+                    <th>Description</th>
+                    <th>ID</th>
+                    <th>View Details</th>
+                </tr>
+            </thead>
+            <tbody> 
+                {gistItems} 
+            </tbody>
+        </table>
     )
 }
 

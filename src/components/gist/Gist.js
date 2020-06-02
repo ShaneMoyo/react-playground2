@@ -15,6 +15,7 @@ export default function Gist()  {
             const response = await api.getGistDetail(id);
             console.log('response: ', response)
             setGist(response);
+            setLoading(false);
         } catch (error) { 
             setError(true)
             setLoading(false);
