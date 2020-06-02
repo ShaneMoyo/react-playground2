@@ -1,45 +1,55 @@
-import React, {useState} from 'react'; 
+import React, {Component} from 'react'; 
 import api from '../../services/api';
 import PropTypes from 'prop-types';
 
-export default function Search({ setGists }) { 
-    const [username, setUsername] = useState(''); 
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
-
-    const handleChange = value => { 
-        console.log(value); 
-        setUsername(value); 
+export default class Search extends Component { 
+    constructor(props) { 
+        super(props)
+        this.state = { 
+            username: '',
+            loading: false, 
+            error: false 
+        }
     }
 
-    const  handleSubmit = async event => { 
+ 
+    handleChange = username => this.setState({username})
+
+    handleSubmit = async event => { 
         event.preventDefault(); 
-        setLoading(true);
-        setError(false)
+        this.setState({
+            loading: true, 
+            error: false
+        });
         try {
-            const result = await api.getGistByUsername(username);
-            //debugger
-            setGists(result); 
-            setLoading(false);
-            console.log('submit', result);
+            const gists = await api.getGistByUsername(this.state.username);
+            this.props.setGists(gists)
+            this.setState({
+                loading: false
+            });
+            
         } catch (err) {
-            console.log('err: ', err);
-            setError(true)
-            setLoading(false);
+            this.setState({
+                loading: false, 
+                error: true
+            });
         }     
     }
+    render() { 
+        return (
+            <form onSubmit={event => this.handleSubmit(event)}>
+                <label htmlFor="search">Search gists</label>
+                <br/>
+                <input id="search" type="text" name="search" onChange={({ target: { value }}) => this.handleChange(value)}/>
+                <br/>
+                <button type="submit">Search</button> 
+                {   this.state.loading ? <p>Loading...</p> : null  }
+                {   this.state.error ? <p>Request failed...</p> : null  }
+            </form>
+        )
+    }
 
-    return (
-        <form onSubmit={event => handleSubmit(event)}>
-            <label htmlFor="search">Search gists</label>
-            <br/>
-            <input id="search" type="text" name="search" onChange={({ target: { value }}) => handleChange(value)}/>
-            <br/>
-            <button type="submit">Search</button> 
-            {   loading ? <p>Loading...</p> : null  }
-            {   error ? <p>Request failed...</p> : null  }
-        </form>
-    )
+    
 }
 
 Search.propTypes = {
