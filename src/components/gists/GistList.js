@@ -2,15 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import "./GistList.scss"
+import { connect } from 'react-redux';
 
 
-export default class GistList extends Component {
-    constructor(props) { 
-        super(props); 
-        this.state = { 
-            gist: this.props.gist
-        }
-    }
+class GistList extends Component {
 
     render(){
         const { gists } = this.props;
@@ -47,3 +42,4 @@ GistList.propTypes = {
   };
 
 
+export default connect(({ error, loading, gists }) => ({ loading, error, gists }))(GistList);

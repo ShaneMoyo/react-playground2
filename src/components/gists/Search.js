@@ -1,8 +1,10 @@
 import React, {Component} from 'react'; 
 import api from '../../services/api';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { fetchGist } from './actions';
 
-export default class Search extends Component { 
+class Search extends Component { 
     constructor(props) { 
         super()
         this.state = { 
@@ -22,8 +24,7 @@ export default class Search extends Component {
             error: false
         });
         try {
-            const gists = await api.getGistByUsername(this.state.username);
-            this.props.setGists(gists)
+            const gists = await this.props.fetchGist(this.state.username);
             this.setState({
                 loading: false
             });
@@ -47,11 +48,12 @@ export default class Search extends Component {
                 {   this.state.error ? <p>Request failed...</p> : null  }
             </form>
         )
-    }
-
-    
+    }   
 }
 
 Search.propTypes = {
     setGists: PropTypes.func
 };
+
+
+export default connect(({ error, loading }) => ({ loading, error }), { fetchGist })(Search);
