@@ -1,6 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './rootReducer';
+import promiseMiddleware from './promise-middleware';
 
 
 const logger = store => next => action => {
@@ -14,7 +15,8 @@ const store = createStore(
   compose(
     applyMiddleware(
       logger,
-      thunk
+      thunk,
+      promiseMiddleware
     )
   )
 );
