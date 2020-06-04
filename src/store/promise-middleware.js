@@ -8,6 +8,7 @@ export default ({ dispatch }) => next => async action => {
   
   try {
     const result = await payload;
+    debugger
     dispatch({ type: actions.DONE_LOADING });    
     dispatch({ 
       type, 
@@ -15,10 +16,10 @@ export default ({ dispatch }) => next => async action => {
     });
   }
   catch(err) {
+    debugger
     dispatch({
       type: actions.ERROR,
       payload: err
     });
-    throw err;
   }
 };

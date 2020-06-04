@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import "./GistList.scss"
+import {  useSelector } from "react-redux";
 
 
-export default function GistList({ gists }) {
+export default function GistList() {
+    const gists = useSelector(state => state.gists);
     const gistItem = gist => (
         <tr key={gist.id}>
             <td>{gist.description}</td>
@@ -31,8 +33,5 @@ export default function GistList({ gists }) {
     )
 }
 
-GistList.propTypes = {
-    gists: PropTypes.array
-  };
 
 
